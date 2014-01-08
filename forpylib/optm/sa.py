@@ -59,22 +59,31 @@ class Sa(object):
             x0[index] = randint(self.ranges[index, 0],self.ranges[index, 1])        
         return x0   
     
+    
+    def restart(self):
+        '''
+        Resets the optimizer.
+        '''
+        self.x = self.x0()       
+        
+        
+    
     def new(self, x):
-            '''
-            Generate neighbor
-            '''
-            x = x.copy()          
-            n = self.n           
-            rn =[-1,1]
-            index2= randint(0,1)
-            index=randrange(0,n,1)
-            x[index] = x[index] + rn[index2]                                
-            r0 = (x[index]<self.ranges[index, 0])
-            r1 = (x[index]>self.ranges[index, 1])
-            r2 = (uniform()<0.25)         
-            if r0 or  r1 or r2:
-                x[index] = randint(self.ranges[index, 0],self.ranges[index, 1])                         
-            return x
+        '''
+        Generate neighbor
+        '''
+        x = x.copy()          
+        n = self.n           
+        rn =[-1,1]
+        index2= randint(0,1)
+        index=randrange(0,n,1)
+        x[index] = x[index] + rn[index2]                                
+        r0 = (x[index]<self.ranges[index, 0])
+        r1 = (x[index]>self.ranges[index, 1])
+        r2 = (uniform()<0.25)         
+        if r0 or  r1 or r2:
+            x[index] = randint(self.ranges[index, 0],self.ranges[index, 1])                         
+        return x
     
     def step(self):
         '''
@@ -92,7 +101,7 @@ class Sa(object):
         self.temp = self.temp * self.r              
         return
 
-    def __call__(self):
+    def run(self):
         '''
           This method returns the best estimate of the minimum.
         '''

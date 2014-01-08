@@ -35,8 +35,7 @@ from tools.tabulate import *
 import time
 
 class PrescriptionWriter(object):
-    """ A class to specify forest management prescriptions (sequence of 
-        operations) at stand level  
+    """ A class to specify forest management prescriptions (sequence of operations) at stand level  
 
     :Parameters:
 

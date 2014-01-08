@@ -8,8 +8,6 @@
 test
 """
 
-
-
 from numpy import *
 from forpylib.optm.sa import Sa
 from forpylib.optm.ds import Ds
@@ -24,8 +22,16 @@ def f(xyz):
                 1. +cos(x * y * z * v * w * r * s)** 2.))
 
 
+
+
+
 class Test(unittest.TestCase):
      
+    
+    
+    
+    
+    
     
     def test_sa(self):
         xrange = [(-5, 5),(-10, 10),(-20, 20),(-30, 30),(-40, 40), (-50, 50), (-60, 60)]
@@ -34,7 +40,7 @@ class Test(unittest.TestCase):
         fx = f(result)
         for i in range(5):     
             csa = Sa(f, n,xrange,temp=600, imax=600)
-            result0= csa()
+            result0= csa.run()
             fx0 = f(result0)
             if (fx0<fx):
                 result =result0
@@ -54,7 +60,7 @@ class Test(unittest.TestCase):
         fx = f(result)
         for i in range(10):
             cds = Ds(f,n,xrange, imax=5000)
-            result0= cds()
+            result0= cds.run()
             fx0 = f(result0)
             if (fx0<fx):
                 result =result0

@@ -52,6 +52,12 @@ class Ds(object):
             x0[index] = randint(self.ranges[index, 0],self.ranges[index, 1])        
         return x0
 
+    def restart(self):
+        '''
+        Resets the optimizer.
+        '''
+        self.x = self.x0()  
+    
     def new(self, x,index):
         '''
         Generate neighbor
@@ -62,8 +68,7 @@ class Ds(object):
         x = where(x < r0, r0, x)
         x = where(x > r1, r1, x)      
         return x
-    
-    
+       
     def step(self):
         '''
         One step of the search.
@@ -81,7 +86,7 @@ class Ds(object):
             self.x = x
         return 
 
-    def __call__(self):
+    def run(self):
         '''
           This method returns the best estimate of the minimum.
         '''
